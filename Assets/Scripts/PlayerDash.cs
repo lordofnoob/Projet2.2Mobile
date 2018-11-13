@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    public Camera cam;
     public float directionRun;
     public float accelerationRn;
     public float vitesseMaxCourse;
@@ -17,44 +18,56 @@ public class PlayerDash : MonoBehaviour
     public Rigidbody body;
     public float dashSpeed;
     public float maxLengthSaut;
+    public float mass;
+    public float drag;
 
 
     // Recup vecteur de dash
     float lengthSaut;
-    Vector2 beginPose;
-    Vector2 direction;
-    Vector2 endPos;
+    Vector3 beginPose;
+    Vector3 direction;
+    Vector3 endPos;
     float previsedDashLength;
     float parcoredLength;
+    Vector3 posPlayerPreDash;
+
+    
 
     //check possibilité de dash/declenchement dash
     bool directionChosen = false;
     bool canDash = true;
+    bool recordDistance;
+    float recordedDistance;
+
+
+    float distanceToScreen;
+
+    private void Start()
+    {
+        distanceToScreen = cam.farClipPlane;
+        body.drag = drag;
+        body.mass = mass;
+    }
+
 
 
 
     void Update()
     {
-       
-        if (canDash==true)
+
+        if (canDash == true)
             RecupVector();
-        parcoredLength = Vector2.Distance(endPos, transform.position);
-        CheckDashLength();
+
+    
+
+        RecordParcoredDistance();
+
+        if (anim.GetBool("dashing")==false)
+        {
+            ResetProp();
+        }
 
     }
-
-
-
-    private void FixedUpdate()
-    {
-
-
-       // CheckDash();
-    }
-
-
-
-
 
     void RecupVector()
     {
@@ -66,20 +79,31 @@ public class PlayerDash : MonoBehaviour
 
             Touch touch = Input.GetTouch(0);
 
-            switch (touch.phase)
+           switch (touch.phase)
             {
                 case TouchPhase.Began:
                     {
                         anim.SetBool("prepDash", true);
                         Time.timeScale = 0.2f;
-                        beginPose = Input.GetTouch(0).position;
+
+                        beginPose = Input.mousePosition;
+                        beginPose.z = distanceToScreen;
+                        beginPose = cam.ScreenToWorldPoint(beginPose);
+                        
                         break;
                     }
                 case TouchPhase.Moved:
                     {
                         Time.timeScale = 0.2f;
-                        direction = touch.position - beginPose;
-                        lengthSaut = Vector2.Distance(touch.position, beginPose);
+
+                        var movingFinger = Input.mousePosition;
+                        movingFinger.z = distanceToScreen;
+                        movingFinger= cam.ScreenToWorldPoint(movingFinger);
+
+                        direction = movingFinger - beginPose;
+
+                        lengthSaut = Vector2.Distance(movingFinger, beginPose);
+
                         if (lengthSaut > maxLengthSaut)
                             lengthSaut = maxLengthSaut;
                     
@@ -88,28 +112,39 @@ public class PlayerDash : MonoBehaviour
                 case TouchPhase.Ended:
                     {
                         body.velocity = new Vector3(0, 0, 0);
-                        Time.timeScale = 1f;
-                        canDash = false;
+                        Time.timeScale = 2f;    
                         directionChosen = true;
+
+
                         StartCoroutine("coolDownDash");
+                        canDash = false;
 
                         anim.SetBool("prepDash", false);
                         anim.SetBool("dashing", true);
-                        playerPos=
-                        endPos = Input.GetTouch(0).position;
-                        previsedDashLength =  Vector2.Distance(beginPose, endPos);
+
+                        posPlayerPreDash = transform.position;
+
+                        var endPos = Input.mousePosition;
+                        endPos.z = distanceToScreen;
+                        endPos = cam.ScreenToWorldPoint(endPos);
+
+                        previsedDashLength =  Vector3.Distance(beginPose, endPos);
+
+
+                        recordDistance = true;
+
                         break;
                     }
             }
         }
 
-    }
+    }   
 
     void Dash()
     {
         //  body.velocity = -direction * lengthSaut/6*(dashSpeed/100);
-        body.AddForce(-direction * lengthSaut/1280);
-        print(body.velocity);
+        body.AddForce(-direction *(lengthSaut/2), ForceMode.Impulse);
+
 
 
     }
@@ -134,34 +169,57 @@ public class PlayerDash : MonoBehaviour
 
     IEnumerator coolDownDash()
     {
+       
         yield return new WaitForSeconds(cooldownDash);
+        print("cd");
         canDash = true;
+        if (anim.GetBool("dashing") == false)
+            anim.SetBool("dashing", false);
+
     }
 
-    void CheckDashLength()
-    {
 
-        print("aka");
-        if (parcoredLength> previsedDashLength)
+
+   
+    private void RecordParcoredDistance()
+    {
+        if (recordDistance == true)
         {
+            body.useGravity = false;
+          //  body.drag = 0.1f;
+            body.mass = 1; 
+            recordedDistance = Vector3.Distance(posPlayerPreDash, transform.position);
+
+            Debug.Log("Recorded distance : " + recordedDistance + ", Prevised dash lenght : " + previsedDashLength);
+            if (recordedDistance > (7/10)*previsedDashLength)
+            {
+                
+                anim.SetBool("dashing",false);
+                recordDistance = false;
+                recordedDistance = 0;
+                previsedDashLength = 0;
+            }
+            
+        }
+        else
+        {
+            recordedDistance = 0;
             previsedDashLength = 0;
-            endPos = ;
-            anim.SetBool("dashing", false);
         }
     }
 
-    void Gravity()
-    {/*
-        body.velocity += new Vector3(0, forceGravite, 0);
-        if (body.velocity.y < -10)
-            body.velocity = new Vector3(body.velocity.x, -10, 0);
-
-        if (body.velocity.x>0)
-            body.velocity = new Vector3(body.velocity.x - 0.02f, body.velocity.y, 0);
-        else if (body.velocity.x<0)
-            body.velocity = new Vector3(body.velocity.x + 0.02f, body.velocity.y, 0);*/
+    private void ResetProp()
+    {
+        Time.timeScale = 1f;
+        body.useGravity = true;
+        body.mass = mass;
+        body.drag = drag;
+        anim.SetBool("dashing", false);
+        recordDistance = false;
     }
 
-
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        anim.SetBool("dashing", false);
+    }
 }

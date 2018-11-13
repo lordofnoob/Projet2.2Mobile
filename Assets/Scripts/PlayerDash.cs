@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    public float directionRun;
+    public float accelerationRn;
+    public float vitesseMaxCourse;
 
     [Header ("anim")]
     public Animator anim;
@@ -13,12 +16,16 @@ public class PlayerDash : MonoBehaviour
     public float cooldownDash;
     public Rigidbody body;
     public float dashSpeed;
+    public float maxLengthSaut;
 
 
     // Recup vecteur de dash
     float lengthSaut;
-    Vector2 posDepart;
+    Vector2 beginPose;
     Vector2 direction;
+    Vector2 endPos;
+    float previsedDashLength;
+    float parcoredLength;
 
     //check possibilité de dash/declenchement dash
     bool directionChosen = false;
@@ -28,10 +35,11 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+       
         if (canDash==true)
             RecupVector();
-
-       // CheckBump();
+        parcoredLength = Vector2.Distance(endPos, transform.position);
+        CheckDashLength();
 
     }
 
@@ -64,34 +72,32 @@ public class PlayerDash : MonoBehaviour
                     {
                         anim.SetBool("prepDash", true);
                         Time.timeScale = 0.2f;
-                        posDepart = Input.GetTouch(0).position;
+                        beginPose = Input.GetTouch(0).position;
                         break;
                     }
                 case TouchPhase.Moved:
                     {
                         Time.timeScale = 0.2f;
-                        direction = touch.position - posDepart;
-                        lengthSaut = Vector2.Distance(touch.position, posDepart);
-                        if (lengthSaut > 300 )
-                            lengthSaut = 300;
+                        direction = touch.position - beginPose;
+                        lengthSaut = Vector2.Distance(touch.position, beginPose);
+                        if (lengthSaut > maxLengthSaut)
+                            lengthSaut = maxLengthSaut;
                     
                         break;
                     }
                 case TouchPhase.Ended:
                     {
                         body.velocity = new Vector3(0, 0, 0);
-
-
-                        print(lengthSaut);
                         Time.timeScale = 1f;
+                        canDash = false;
+                        directionChosen = true;
+                        StartCoroutine("coolDownDash");
 
                         anim.SetBool("prepDash", false);
                         anim.SetBool("dashing", true);
-                        directionChosen = true;
-                        StartCoroutine("coolDownDash");
-                        canDash = false;
-                        print(direction.normalized);
-               
+                        playerPos=
+                        endPos = Input.GetTouch(0).position;
+                        previsedDashLength =  Vector2.Distance(beginPose, endPos);
                         break;
                     }
             }
@@ -102,14 +108,27 @@ public class PlayerDash : MonoBehaviour
     void Dash()
     {
         //  body.velocity = -direction * lengthSaut/6*(dashSpeed/100);
-        body.AddForce(-direction * lengthSaut / 120);
+        body.AddForce(-direction * lengthSaut/1280);
         print(body.velocity);
+
 
     }
 
-    void DirectDash()
+    void Run()
     {
-       //body     
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, 2))
+        {
+            anim.SetBool("Running", true);
+            if (body.velocity.x> vitesseMaxCourse || body.velocity.x< -vitesseMaxCourse)
+            {
+               // body.AddForce(new Vector3());
+            }
+        }
+        else
+        {
+            anim.SetBool("Running", false);
+        }
     }
 
 
@@ -117,6 +136,18 @@ public class PlayerDash : MonoBehaviour
     {
         yield return new WaitForSeconds(cooldownDash);
         canDash = true;
+    }
+
+    void CheckDashLength()
+    {
+
+        print("aka");
+        if (parcoredLength> previsedDashLength)
+        {
+            previsedDashLength = 0;
+            endPos = ;
+            anim.SetBool("dashing", false);
+        }
     }
 
     void Gravity()

@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376947573407930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13, y: 0, z: 0}
+  m_LocalPosition: {x: -6, y: 1, z: -1}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -161,7 +161,40 @@ MonoBehaviour:
   anim: {fileID: 95217275704994624}
   cooldownDash: 0.6
   body: {fileID: 54206728784210978}
-  dashSpeed: 8
-  maxLengthSaut: 7
+  minLengthSaut: 4
+  maxLengthSaut: 15
   mass: 5
   drag: 1
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0013667764
+      value: 1.029093
+      inSlope: 0.06992414
+      outSlope: 0.06992414
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08589967
+    - serializedVersion: 3
+      time: 3.536706
+      value: 1.7412102
+      inSlope: 0.5657741
+      outSlope: 0.5657741
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1495901
+      outWeight: 0.038334012
+    - serializedVersion: 3
+      time: 15.008645
+      value: 5.0066633
+      inSlope: -0.011186588
+      outSlope: -0.011186588
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.041835386
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

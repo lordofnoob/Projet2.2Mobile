@@ -16,10 +16,11 @@ public class PlayerDash : MonoBehaviour
     [Header("Twic dash")]
     public float cooldownDash;
     public Rigidbody body;
-    public float dashSpeed;
+    public float minLengthSaut;
     public float maxLengthSaut;
     public float mass;
     public float drag;
+    public AnimationCurve curve;
     #endregion
 
     #region DashInfo
@@ -37,6 +38,7 @@ public class PlayerDash : MonoBehaviour
     Vector3 posPlayerPreDash;
     bool recordDistance;
     float recordedDistance;
+    Vector3 oldPos;
     #endregion
 
     float distanceToScreen;
@@ -58,24 +60,14 @@ public class PlayerDash : MonoBehaviour
         //check si le dash effectué 
         RecordParcoredDistance();
         //reset des propriétés si le joueur ne dash et ne s'appréte pas a dasher
-        if (anim.GetBool("dashing")==false && anim.GetBool("prepDash")==false)
+        /*if (anim.GetBool("dashing")==false && anim.GetBool("prepDash")==false)
         {
             ResetProp();
-        }
-
+        }*/
+        print(recordDistance);
     }
 
     //le faire arreter de dash quand il rentre en collision avec un autre objet
-    void OnCollisionEnter(Collision collision)
-    {
-        anim.SetBool("dashing", false);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {  
-        sens = -sens;
-    }
-
     void RecupVector()
     {
         if (Input.touchCount > 0)
@@ -108,9 +100,14 @@ public class PlayerDash : MonoBehaviour
                         //longueur
                         lengthSaut = Vector2.Distance(movingFinger, beginPos);
                         //maitrise de la longueur maximale 
+                       
                         if (lengthSaut > maxLengthSaut)
                             lengthSaut = maxLengthSaut;
+                        /* if (lengthSaut < minLengthSaut)
+                             lengthSaut = minLengthSaut;
+                             */
                         break;
+                       
                     }
                 case TouchPhase.Ended:
                     {
@@ -146,8 +143,9 @@ public class PlayerDash : MonoBehaviour
                             sens = 1;
                         else
                             sens = -1;
-
+                        print("lengthSaut" + lengthSaut);
                         break;
+                       
                     }
             }
         }
@@ -156,10 +154,10 @@ public class PlayerDash : MonoBehaviour
 
     void Dash()
     {
-        body.AddForce(-direction * (lengthSaut / 2), ForceMode.Impulse);
+        body.AddForce(-direction * curve.Evaluate(lengthSaut), ForceMode.Impulse);
     }
 
-    //reset des propriétés si il est sensé ne rien avoir de changé
+    //reset des propriétés si il est se     nsé ne rien avoir de changé
     private void ResetProp()
     {
         Time.timeScale = 1f;
@@ -190,9 +188,13 @@ public class PlayerDash : MonoBehaviour
     {
         if (recordDistance == true)
         {
+ 
+
             body.useGravity = false;
             body.mass = 1;
-            recordedDistance = Vector3.Distance(posPlayerPreDash, transform.position);
+            recordedDistance += Vector3.Distance(oldPos, transform.position);
+        
+
             //  Debug.Log("Recorded distance : " + recordedDistance + ", Prevised dash lenght : " + previsedDashLength);
             //verification de la distance dashé 
             if (recordedDistance > previsedDashLength)
@@ -209,6 +211,22 @@ public class PlayerDash : MonoBehaviour
             previsedDashLength = 0;
         }
     }
+
+    private void LateUpdate()
+    {
+        oldPos = transform.position;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        sens = -sens;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        ResetProp();
+    }
+
 
     IEnumerator coolDownDash()
     {

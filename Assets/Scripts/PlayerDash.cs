@@ -9,6 +9,8 @@ public class PlayerDash : MonoBehaviour
     public int speed;
     int sens=1;
     int basicSpeed;
+    public GameObject fleche;
+
     #region 
     [Header("anim")]
     public Animator anim;
@@ -100,7 +102,7 @@ public class PlayerDash : MonoBehaviour
                         //longueur
                         lengthSaut = Vector2.Distance(movingFinger, beginPos);
                         //maitrise de la longueur maximale 
-                       
+                        FlecheUpdate();
                         if (lengthSaut > maxLengthSaut)
                             lengthSaut = maxLengthSaut;
                         /* if (lengthSaut < minLengthSaut)
@@ -143,7 +145,7 @@ public class PlayerDash : MonoBehaviour
                             sens = 1;
                         else
                             sens = -1;
-                        print("lengthSaut" + lengthSaut);
+                
                         break;
                        
                     }
@@ -227,6 +229,11 @@ public class PlayerDash : MonoBehaviour
         ResetProp();
     }
 
+    void FlecheUpdate()
+    {
+        Vector3 angle = Vector3.RotateTowards(transform.position, direction, 360,0);
+        print(angle);
+    }
 
     IEnumerator coolDownDash()
     {

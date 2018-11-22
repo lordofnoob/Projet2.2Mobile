@@ -5823,36 +5823,6 @@ Prefab:
       propertyPath: cam
       value: 
       objectReference: {fileID: 534669904}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: dashSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: drag
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: maxLengthSaut
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: cooldownDash
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: minLengthSaut
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: mass
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
   m_IsPrefabAsset: 0

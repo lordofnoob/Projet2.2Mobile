@@ -85,7 +85,7 @@ public class PlayerDash : MonoBehaviour
     //le faire arreter de dash quand il rentre en collision avec un autre objet
     void RecupVector()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && canDash == true)
         {
             Touch touch = Input.GetTouch(0);
 

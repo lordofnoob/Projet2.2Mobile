@@ -9,50 +9,50 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1561707048119640}
+  m_RootGameObject: {fileID: 1261283895156712}
   m_IsPrefabAsset: 1
---- !u!1 &1561707048119640
+--- !u!1 &1261283895156712
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4135130541469522}
-  - component: {fileID: 114242958235921916}
-  - component: {fileID: 23481041703671706}
-  - component: {fileID: 33985662383158154}
-  - component: {fileID: 114716817781801928}
-  - component: {fileID: 64325625793606606}
+  - component: {fileID: 4929061853318372}
+  - component: {fileID: 114184879728940764}
+  - component: {fileID: 23906169732257276}
+  - component: {fileID: 33423834390222996}
+  - component: {fileID: 114235632657208684}
+  - component: {fileID: 64206784090077026}
   m_Layer: 0
-  m_Name: ClassicBuilding30_50_30
+  m_Name: BuildingTower2D50_250
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 126
+  m_StaticEditorFlags: 127
   m_IsActive: 1
---- !u!4 &4135130541469522
+--- !u!4 &4929061853318372
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.0210104, y: 5.922755, z: -8.624369}
+  m_GameObject: {fileID: 1261283895156712}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 500, y: 450, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23481041703671706
+--- !u!23 &23906169732257276
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
+  m_GameObject: {fileID: 1261283895156712}
   m_Enabled: 1
   m_CastShadows: 0
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -67,7 +67,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -79,19 +79,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33985662383158154
+--- !u!33 &33423834390222996
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
+  m_GameObject: {fileID: 1261283895156712}
   m_Mesh: {fileID: 0}
---- !u!64 &64325625793606606
+--- !u!64 &64206784090077026
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
+  m_GameObject: {fileID: 1261283895156712}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -100,24 +100,24 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 0}
---- !u!114 &114242958235921916
+--- !u!114 &114184879728940764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
+  m_GameObject: {fileID: 1261283895156712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
---- !u!114 &114716817781801928
+--- !u!114 &114235632657208684
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1561707048119640}
+  m_GameObject: {fileID: 1261283895156712}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
@@ -146,7 +146,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: -15, y: 25}
+      localPivot: {x: -25, y: -295}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -175,7 +175,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: -15, y: 25}
+      localPivot: {x: -0.5, y: -295}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -204,7 +204,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: 15, y: 25}
+      localPivot: {x: 25, y: -295}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -233,7 +233,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: 15, y: 25}
+      localPivot: {x: 0.5, y: -295}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -262,7 +262,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: 15, y: -15}
+      localPivot: {x: 25, y: -0.5}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -291,7 +291,7 @@ MonoBehaviour:
       offset: {x: 0, y: 0}
       rotation: 0
       justify: 0
-      localPivot: {x: -15, y: -15}
+      localPivot: {x: -25, y: -0.5}
       localSize: {x: 0, y: 0}
       anchor: 9
     _mat: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
@@ -308,55 +308,55 @@ MonoBehaviour:
   - array: 090000000c00000014000000
   - array: 0b0000000e00000012000000
   _vertices:
-  - {x: 0, y: 0, z: 0}
-  - {x: 30, y: 0, z: 0}
-  - {x: 0, y: 50, z: 0}
-  - {x: 30, y: 50, z: 0}
-  - {x: 30, y: 0, z: 0}
-  - {x: 30, y: 0, z: -30}
-  - {x: 30, y: 50, z: 0}
-  - {x: 30, y: 50, z: -30}
-  - {x: 30, y: 0, z: -30}
-  - {x: 0, y: 0, z: -30}
-  - {x: 30, y: 50, z: -30}
-  - {x: 0, y: 50, z: -30}
-  - {x: 0, y: 0, z: -30}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 50, z: -30}
-  - {x: 0, y: 50, z: 0}
-  - {x: 0, y: 50, z: 0}
-  - {x: 30, y: 50, z: 0}
-  - {x: 0, y: 50, z: -30}
-  - {x: 30, y: 50, z: -30}
-  - {x: 0, y: 0, z: -30}
-  - {x: 30, y: 0, z: -30}
-  - {x: 0, y: 0, z: 0}
-  - {x: 30, y: 0, z: 0}
+  - {x: 0, y: -420, z: 0}
+  - {x: 50, y: -420, z: 0}
+  - {x: 0, y: -170, z: 0}
+  - {x: 50, y: -170, z: 0}
+  - {x: 50, y: -420, z: 0}
+  - {x: 50, y: -420, z: -1}
+  - {x: 50, y: -170, z: 0}
+  - {x: 50, y: -170, z: -1}
+  - {x: 50, y: -420, z: -1}
+  - {x: 0, y: -420, z: -1}
+  - {x: 50, y: -170, z: -1}
+  - {x: 0, y: -170, z: -1}
+  - {x: 0, y: -420, z: -1}
+  - {x: 0, y: -420, z: 0}
+  - {x: 0, y: -170, z: -1}
+  - {x: 0, y: -170, z: 0}
+  - {x: 0, y: -170, z: 0}
+  - {x: 50, y: -170, z: 0}
+  - {x: 0, y: -170, z: -1}
+  - {x: 50, y: -170, z: -1}
+  - {x: 0, y: -420, z: -1}
+  - {x: 50, y: -420, z: -1}
+  - {x: 0, y: -420, z: 0}
+  - {x: 50, y: -420, z: 0}
   _uv:
+  - {x: 0, y: -420}
+  - {x: -50, y: -420}
+  - {x: 0, y: -170}
+  - {x: -50, y: -170}
+  - {x: 0, y: -420}
+  - {x: -1, y: -420}
+  - {x: 0, y: -170}
+  - {x: -1, y: -170}
+  - {x: 50, y: -420}
+  - {x: 0, y: -420}
+  - {x: 50, y: -170}
+  - {x: 0, y: -170}
+  - {x: 1, y: -420}
+  - {x: 0, y: -420}
+  - {x: 1, y: -170}
+  - {x: 0, y: -170}
   - {x: 0, y: 0}
-  - {x: -30, y: 0}
-  - {x: 0, y: 50}
-  - {x: -30, y: 50}
+  - {x: 50, y: 0}
+  - {x: 0, y: -1}
+  - {x: 50, y: -1}
+  - {x: -0, y: -1}
+  - {x: -50, y: -1}
   - {x: 0, y: 0}
-  - {x: -30, y: 0}
-  - {x: 0, y: 50}
-  - {x: -30, y: 50}
-  - {x: 30, y: 0}
-  - {x: 0, y: 0}
-  - {x: 30, y: 50}
-  - {x: 0, y: 50}
-  - {x: 30, y: 0}
-  - {x: 0, y: 0}
-  - {x: 30, y: 50}
-  - {x: 0, y: 50}
-  - {x: 0, y: 0}
-  - {x: 30, y: 0}
-  - {x: 0, y: -30}
-  - {x: 30, y: -30}
-  - {x: 0, y: -30}
-  - {x: -30, y: -30}
-  - {x: 0, y: 0}
-  - {x: -30, y: 0}
+  - {x: -50, y: 0}
   _uv3: []
   _uv4: []
   _tangents: []

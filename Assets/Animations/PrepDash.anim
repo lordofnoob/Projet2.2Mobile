@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Dash
+  m_Name: PrepDash
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -68,13 +68,6 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: ParticlePrepDashOn
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0
-    functionName: ParticlePrepDashOff
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

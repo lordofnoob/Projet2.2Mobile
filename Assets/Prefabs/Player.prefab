@@ -11,16 +11,16 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1376947573407930}
   m_IsPrefabAsset: 1
---- !u!1 &1305728310389584
+--- !u!1 &1065048252296802
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4388786224318774}
-  - component: {fileID: 198380704695438150}
-  - component: {fileID: 199542372479827816}
+  - component: {fileID: 4775771177431714}
+  - component: {fileID: 198482647600295624}
+  - component: {fileID: 199731147634368922}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -73,10 +73,23 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
-  - {fileID: 4388786224318774}
+  - {fileID: 4775771177431714}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4775771177431714
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1065048252296802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4640349200374864}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &23884743853708670
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -190,20 +203,20 @@ MonoBehaviour:
   cam: {fileID: 0}
   speed: 10
   fleche: {fileID: 0}
-  particlePrepDash: {fileID: 0}
+  particlePrepDash: {fileID: 198482647600295624}
   anim: {fileID: 95217275704994624}
-  cooldownDash: 2
+  cooldownDash: 0.5
   body: {fileID: 54206728784210978}
   minLengthSaut: 1
-  maxLengthSaut: 3
+  maxLengthSaut: 20
   mass: 10
-  drag: 0.5
+  drag: 2
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0.0013667764
-      value: 1.029093
+      value: 0.020342112
       inSlope: 0.06992414
       outSlope: 0.06992414
       tangentMode: 0
@@ -211,17 +224,17 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.08589967
     - serializedVersion: 3
-      time: 3.536706
-      value: 1.7412102
-      inSlope: 0.5657741
-      outSlope: 0.5657741
+      time: 3.4738398
+      value: 0.23679662
+      inSlope: 0.1122988
+      outSlope: 0.1122988
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.1495901
-      outWeight: 0.038334012
+      outWeight: 0.05916557
     - serializedVersion: 3
-      time: 15.008645
-      value: 5.0066633
+      time: 14.945779
+      value: 1.4955864
       inSlope: -0.011186588
       outSlope: -0.011186588
       tangentMode: 0
@@ -231,19 +244,19 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!198 &198380704695438150
+--- !u!198 &198482647600295624
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1305728310389584}
+  m_GameObject: {fileID: 1065048252296802}
   serializedVersion: 5
   lengthInSec: 1
-  simulationSpeed: 2
+  simulationSpeed: 5
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 0
+  playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -999,7 +1012,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -4773,13 +4786,13 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!199 &199542372479827816
+--- !u!199 &199731147634368922
 ParticleSystemRenderer:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1305728310389584}
+  m_GameObject: {fileID: 1065048252296802}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

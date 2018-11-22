@@ -67,7 +67,7 @@ public class PlayerDash : MonoBehaviour
         {
             ResetProp();
         }*/
-        print(recordDistance);
+        //print(recordDistance);
     }
 
     //le faire arreter de dash quand il rentre en collision avec un autre objet
@@ -102,6 +102,8 @@ public class PlayerDash : MonoBehaviour
                         direction = movingFinger - beginPos;
                         //longueur
                         lengthSaut = Vector2.Distance(movingFinger, beginPos);
+                        
+                        
                         //maitrise de la longueur maximale 
                         FlecheUpdate();
                         if (lengthSaut > maxLengthSaut)
@@ -109,6 +111,7 @@ public class PlayerDash : MonoBehaviour
                         /* if (lengthSaut < minLengthSaut)
                              lengthSaut = minLengthSaut;
                              */
+
                         break;
                        
                     }
@@ -116,8 +119,8 @@ public class PlayerDash : MonoBehaviour
                     {
                         //reset de la vélocité pour faire un gros paf lors du dash
                         body.velocity = new Vector3(0, 0, 0);
-
-                        Time.timeScale = 2f;
+                        body.useGravity = false;
+                        Time.timeScale = 1;
                         directionChosen = true;
 
                         //empecher le joueur de redash avec un cd et indication qu'il ne peut pas dash
@@ -146,7 +149,7 @@ public class PlayerDash : MonoBehaviour
                             sens = 1;
                         else
                             sens = -1;
-                
+                        canDash = false;
                         break;
                        
                     }
@@ -157,7 +160,10 @@ public class PlayerDash : MonoBehaviour
 
     void Dash()
     {
-        body.AddForce(-direction * curve.Evaluate(lengthSaut), ForceMode.Impulse);
+        print("ALED");
+        body.drag = 0;
+        body.mass = 1;
+        body.AddForce(-direction * 1.5f * curve.Evaluate(lengthSaut), ForceMode.Impulse);
     }
 
     //reset des propriétés si il est se     nsé ne rien avoir de changé
@@ -191,10 +197,6 @@ public class PlayerDash : MonoBehaviour
     {
         if (recordDistance == true)
         {
- 
-
-            body.useGravity = false;
-            body.mass = 1;
             recordedDistance += Vector3.Distance(oldPos, transform.position);
         
 
@@ -204,14 +206,11 @@ public class PlayerDash : MonoBehaviour
             {
                 anim.SetBool("dashing", false);
                 recordDistance = false;
-                recordedDistance = 0;
-                previsedDashLength = 0;
+                //recordedDistance = 0;
+               // previsedDashLength = 0;
+                coolDownDash();
+                ResetProp();
             }
-        }
-        else
-        {
-            recordedDistance = 0;
-            previsedDashLength = 0;
         }
     }
 
@@ -233,27 +232,22 @@ public class PlayerDash : MonoBehaviour
     void FlecheUpdate()
     {
         Vector3 angle = Vector3.RotateTowards(transform.position, direction, 360,0);
-        print(angle);
+       //print(angle);
     }
 
     IEnumerator coolDownDash()
     {
-
         yield return new WaitForSeconds(cooldownDash);
-        print("cd");
         canDash = true;
-        if (anim.GetBool("dashing") == false)
-            anim.SetBool("dashing", false);
-
     }
 
     void ParticlePrepDashOn()
     {
-        particlePrepDash.Play();
+        particlePrepDash.enableEmission=true;
     }
     void ParticlePrepDashOff()
     {
-        particlePrepDash.Stop();
+        particlePrepDash.enableEmission = false;
     }
 
 }

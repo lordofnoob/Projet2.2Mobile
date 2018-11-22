@@ -5779,6 +5779,53 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
+--- !u!1001 &715992443
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4640349200374864, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114202092924780562, guid: 0dfdc438acbb181489cdcbeb006a2668,
+        type: 2}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 534669904}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!43 &740733820
 Mesh:
   m_ObjectHideFlags: 0

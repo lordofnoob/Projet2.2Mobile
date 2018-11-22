@@ -33,7 +33,7 @@ public class ScrollingManager : MonoBehaviour
     {
         if(col.gameObject == player)
         {
-            Debug.Log("Player Dead");
+            PlayerDash.dead = true;
         }
     }
 

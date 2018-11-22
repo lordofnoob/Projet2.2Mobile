@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
+    public static bool dead=false;
+
     public Camera cam;
     public int speed;
     int sens=1;
@@ -55,19 +57,29 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        // check de distance avec le sol pour run 
-        Run();
-        // check de possibilité de dash
-        if (canDash == true)
-            RecupVector();
-        //check si le dash effectué 
-        RecordParcoredDistance();
-        //reset des propriétés si le joueur ne dash et ne s'appréte pas a dasher
-        /*if (anim.GetBool("dashing")==false && anim.GetBool("prepDash")==false)
+        Debug.Log(dead);
+        if (dead == false)
         {
-            ResetProp();
-        }*/
-        //print(recordDistance);
+            // check de distance avec le sol pour run 
+            Run();
+            // check de possibilité de dash
+            if (canDash == true)
+                RecupVector();
+            //check si le dash effectué 
+            RecordParcoredDistance();
+            //reset des propriétés si le joueur ne dash et ne s'appréte pas a dasher
+            /*if (anim.GetBool("dashing")==false && anim.GetBool("prepDash")==false)
+            {
+                ResetProp();
+            }
+            */
+            //print(recordDistance);
+        }
+        else
+        {
+            anim.SetBool("dying", true);
+            anim.SetBool("running", false);
+        }
     }
 
     //le faire arreter de dash quand il rentre en collision avec un autre objet

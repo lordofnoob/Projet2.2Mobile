@@ -10,6 +10,7 @@ public class PlayerDash : MonoBehaviour
     int sens=1;
     int basicSpeed;
     public GameObject fleche;
+    public ParticleSystem particlePrepDash;
 
     #region 
     [Header("anim")]
@@ -244,6 +245,15 @@ public class PlayerDash : MonoBehaviour
         if (anim.GetBool("dashing") == false)
             anim.SetBool("dashing", false);
 
+    }
+
+    void ParticlePrepDashOn()
+    {
+        particlePrepDash.Play();
+    }
+    void ParticlePrepDashOff()
+    {
+        particlePrepDash.Stop();
     }
 
 }

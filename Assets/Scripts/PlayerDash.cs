@@ -160,7 +160,6 @@ public class PlayerDash : MonoBehaviour
 
     void Dash()
     {
-        print("ALED");
         body.drag = 0;
         body.mass = 1;
         body.AddForce(-direction * 1.5f * curve.Evaluate(lengthSaut), ForceMode.Impulse);
@@ -182,7 +181,7 @@ public class PlayerDash : MonoBehaviour
     void Run()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, 1) && anim.GetBool("prepDash") == false && anim.GetBool("dashing") == false)
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, 1.5f) && anim.GetBool("prepDash") == false && anim.GetBool("dashing") == false)
         {
             anim.SetBool("running", true);
             body.velocity = new Vector2(speed*sens, 0);    

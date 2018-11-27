@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     public static bool dead=false;
-
+    public bool canDash = true;
     public Camera cam;
     public int speed;
     int sens=1;
@@ -31,7 +31,7 @@ public class PlayerDash : MonoBehaviour
     #region DashInfo
     float lengthSaut;
     Vector3 direction;
-    public bool canDash = false;
+ 
     //check possibilité de dash/declenchement dash
     bool directionChosen = false;
     //mesure de la distance a dash
@@ -244,14 +244,19 @@ public class PlayerDash : MonoBehaviour
 
     void FlecheUpdate()
     {
-        Vector3 angle = Vector3.RotateTowards(transform.position, direction, 360,0);
-       //print(angle);
+        Vector3 angle = Vector3.RotateTowards(new Vector3(0,0,transform.position.z), new Vector3(0, 0, direction.z), 360,0);
+        print(angle);
+        // fleche.transform.rotation.eulerAngles = angle;
+
+        fleche.transform.eulerAngles = new Vector3 (0,0, Mathf.Atan2(direction.x, direction.y));
+
+           // Quaternion.EulerAngles();
     }
 
     IEnumerator coolDownDash()
     {
         yield return new WaitForSeconds(cooldownDash);
-        //canDash = true;
+        canDash = true;
     }
 
     void ParticlePrepDashOn()

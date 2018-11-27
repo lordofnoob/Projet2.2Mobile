@@ -1645,28 +1645,13 @@ Prefab:
       propertyPath: speed
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 54206728784210978, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: m_Mass
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114281564005918728, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1372009527}
     - target: {fileID: 4580101472624642, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 85
+      value: 154
       objectReference: {fileID: 0}
     - target: {fileID: 4580101472624642, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114281564005918728, guid: 0dfdc438acbb181489cdcbeb006a2668,
-        type: 2}
-      propertyPath: canDash
-      value: 1
+      propertyPath: m_LocalPosition.x
+      value: 280
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
@@ -2489,7 +2474,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 2050846288}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 30
     OrthographicSize: 10
@@ -4781,13 +4766,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 758855207}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0.48076248, z: 93}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: -3, y: -0.019241333, z: 99}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children: []
   m_Father: {fileID: 301682583}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &758855209
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6151,7 +6136,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-167728
+  m_Name: pb_Mesh-482386
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -10849,7 +10834,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1372009523}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.172509, y: -7.1430783, z: -12.005741}
+  m_LocalPosition: {x: 273.82748, y: 152.87616, z: -73.00574}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1027001851}
@@ -10912,9 +10897,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.1
-  far clip plane: 5000
-  field of view: 40
+  near clip plane: 6
+  far clip plane: 100
+  field of view: 30
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -12487,7 +12472,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-142432
+  m_Name: pb_Mesh-482306
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2

@@ -31,7 +31,7 @@ public class PlayerDash : MonoBehaviour
     #region DashInfo
     float lengthSaut;
     Vector3 direction;
-    bool canDash = true;
+    public bool canDash = false;
     //check possibilité de dash/declenchement dash
     bool directionChosen = false;
     //mesure de la distance a dash
@@ -57,6 +57,8 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
+ 
+
         Debug.Log(dead);
         if (dead == false)
         {
@@ -249,7 +251,7 @@ public class PlayerDash : MonoBehaviour
     IEnumerator coolDownDash()
     {
         yield return new WaitForSeconds(cooldownDash);
-        canDash = true;
+        //canDash = true;
     }
 
     void ParticlePrepDashOn()

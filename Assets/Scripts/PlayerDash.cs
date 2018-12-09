@@ -15,10 +15,10 @@ public class PlayerDash : MonoBehaviour
     public ParticleSystem particlePrepDash;
 
     #region 
-    [Header("anim")]
+    [Header("Animation")]
     public Animator anim;
 
-    [Header("Twic dash")]
+    [Header("Tweak dash")]
     public float cooldownDash;
     public Rigidbody body;
     public float minLengthSaut;
@@ -57,8 +57,6 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
- 
-
         Debug.Log(dead);
         if (dead == false)
         {
@@ -117,7 +115,6 @@ public class PlayerDash : MonoBehaviour
                         //longueur
                         lengthSaut = Vector2.Distance(movingFinger, beginPos);
                         
-                        
                         //maitrise de la longueur maximale 
                         FlecheUpdate();
                         if (lengthSaut > maxLengthSaut)
@@ -138,7 +135,7 @@ public class PlayerDash : MonoBehaviour
                         directionChosen = true;
 
                         //empecher le joueur de redash avec un cd et indication qu'il ne peut pas dash
-                        StartCoroutine("coolDownDash");
+                        StartCoroutine(coolDownDash());
                         canDash = false;
                         //anim 
                         anim.SetBool("prepDash", false);
@@ -245,7 +242,7 @@ public class PlayerDash : MonoBehaviour
     void FlecheUpdate()
     {
         Vector3 angle = Vector3.RotateTowards(new Vector3(0,0,transform.position.z), new Vector3(0, 0, direction.z), 360,0);
-        print(angle);
+        Debug.Log(angle);
         // fleche.transform.rotation.eulerAngles = angle;
 
         fleche.transform.eulerAngles = new Vector3 (0,0, Mathf.Atan2(direction.x, direction.y));

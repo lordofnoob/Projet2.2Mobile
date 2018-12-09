@@ -10,7 +10,7 @@ public class CollectibleDashReset : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.GetComponent<PlayerDash>().canDash = true;
+            player.GetComponent<PlayerManager>().canDash = true;
             Destroy(gameObject);
         }
     }

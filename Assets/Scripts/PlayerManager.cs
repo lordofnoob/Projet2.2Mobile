@@ -3,22 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerDash : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    public static bool dead=false;
+    public static PlayerManager playerManager; //Permet d'accéder au player dans n'importe quel script à travers une variable static
+    public bool dead = false;
+
+    #region DashTweaking
+    [Header("Dash")]
     public bool canDash = true;
     public Camera cam;
-    public int speed;
-    int sens=1;
-    int basicSpeed;
-    public GameObject fleche;
-    public ParticleSystem particlePrepDash;
-
-    #region 
-    [Header("Animation")]
-    public Animator anim;
-
-    [Header("Tweak dash")]
     public float cooldownDash;
     public Rigidbody body;
     public float minLengthSaut;
@@ -26,7 +19,21 @@ public class PlayerDash : MonoBehaviour
     public float mass;
     public float drag;
     public AnimationCurve curve;
+    public GameObject fleche;
     #endregion
+
+    #region RunTweaking
+    [Header("Running")]
+    public int speed;
+    int sens=1;
+    int basicSpeed;
+    #endregion
+
+    [Header("Particles")]
+    public ParticleSystem particlePrepDash;
+
+    [Header("Animations")]
+    public Animator anim;
 
     #region DashInfo
     float lengthSaut;
@@ -48,6 +55,11 @@ public class PlayerDash : MonoBehaviour
 
     float distanceToScreen;
 
+    private void Awake()
+    {
+        playerManager = this; //Permet d'accéder au player partout à travers une variable static
+    }
+
     private void Start()
     {
         distanceToScreen = cam.farClipPlane;
@@ -57,7 +69,7 @@ public class PlayerDash : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(dead);
+        //Debug.Log(dead);
         if (dead == false)
         {
             // check de distance avec le sol pour run 
@@ -242,7 +254,7 @@ public class PlayerDash : MonoBehaviour
     void FlecheUpdate()
     {
         Vector3 angle = Vector3.RotateTowards(new Vector3(0,0,transform.position.z), new Vector3(0, 0, direction.z), 360,0);
-        Debug.Log(angle);
+        //Debug.Log(angle);
         // fleche.transform.rotation.eulerAngles = angle;
 
         fleche.transform.eulerAngles = new Vector3 (0,0, Mathf.Atan2(direction.x, direction.y));
@@ -264,5 +276,4 @@ public class PlayerDash : MonoBehaviour
     {
         particlePrepDash.enableEmission = false;
     }
-
 }

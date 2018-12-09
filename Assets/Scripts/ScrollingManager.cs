@@ -1,12 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ScrollingManager : MonoBehaviour
 {
-    [Header("Target")]
-    public GameObject player;
-
     [Header("Distance")]
     public int distanceMax;
     public int distanceMin;
@@ -16,9 +14,9 @@ public class ScrollingManager : MonoBehaviour
     public int vitesseMoy;
     public int vitesseMin;
 
+    public CinemachineVirtualCamera cameraBrain;
+
     float distance;
-
-
 
     [Range(1, 100), SerializeField, Header("Speed")]
     private float movementSpeed = 1;
@@ -31,15 +29,17 @@ public class ScrollingManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider col) //On regarde si le joueur entre dans la zone
     {
-        if(col.gameObject == player)
+        if(col.gameObject == PlayerManager.playerManager.gameObject) //reference au joueur par la var static
         {
-            PlayerDash.dead = true;
+            cameraBrain.m_Follow = null; //blocage de la camera par une var static
+            PlayerManager.playerManager.dead = true;
+            Debug.Log("Player Dead");
         }
     }
 
-    void AdaptSpeed()
+    void AdaptSpeed() // déplacement de la zone ralenti si elle est proche du joueur
     {
-        distance = Mathf.Abs(player.transform.position.x) - Mathf.Abs(transform.position.x);
+        distance = Mathf.Abs(PlayerManager.playerManager.transform.position.x) - Mathf.Abs(transform.position.x);
         if (distance > distanceMax)
             movementSpeed = Mathf.Lerp(movementSpeed, vitesseMax, 0.1f);
         else if (distance <= distanceMax && distance > distanceMin)

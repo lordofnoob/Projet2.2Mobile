@@ -291,6 +291,11 @@ Prefab:
       propertyPath: cooldownDash
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114281564005918728, guid: 0dfdc438acbb181489cdcbeb006a2668,
+        type: 2}
+      propertyPath: speed
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}
   m_IsPrefabAsset: 0

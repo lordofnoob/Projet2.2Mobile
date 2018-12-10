@@ -70,7 +70,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 1.55
-    functionName: 
+    functionName: ParticlePrepDashOn
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

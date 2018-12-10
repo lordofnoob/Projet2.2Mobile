@@ -39,8 +39,6 @@ public class PlayerManager : MonoBehaviour
     float lengthSaut;
     Vector3 direction;
  
-    //check possibilité de dash/declenchement dash
-    bool directionChosen = false;
     //mesure de la distance a dash
     Vector3 beginPos;
     Vector3 endPos;
@@ -73,10 +71,10 @@ public class PlayerManager : MonoBehaviour
         if (dead == false)
         {
             // check de distance avec le sol pour run 
-            Run();
+
             // check de possibilité de dash
-            if (canDash == true)
-                RecupVector();
+            Debug.Log("input"+Input.touchCount);
+            RecupVector();
             //check si le dash effectué 
             RecordParcoredDistance();
             //reset des propriétés si le joueur ne dash et ne s'appréte pas a dasher
@@ -97,8 +95,11 @@ public class PlayerManager : MonoBehaviour
     //le faire arreter de dash quand il rentre en collision avec un autre objet
     void RecupVector()
     {
-        if (Input.touchCount > 0 && canDash == true)
+        if (Input.touchCount <= 0)
+            Run();
+        else if (Input.touchCount > 0 && canDash == true)
         {
+            anim.SetBool("running", false);
             Touch touch = Input.GetTouch(0);
 
             switch (touch.phase)
@@ -126,7 +127,7 @@ public class PlayerManager : MonoBehaviour
                         direction = movingFinger - beginPos;
                         //longueur
                         lengthSaut = Vector2.Distance(movingFinger, beginPos);
-                        
+
                         //maitrise de la longueur maximale 
                         FlecheUpdate();
                         if (lengthSaut > maxLengthSaut)
@@ -136,22 +137,28 @@ public class PlayerManager : MonoBehaviour
                              */
 
                         break;
-                       
+
                     }
                 case TouchPhase.Ended:
                     {
+                        Debug.Log(lengthSaut);
                         //reset de la vélocité pour faire un gros paf lors du dash
                         body.velocity = new Vector3(0, 0, 0);
                         body.useGravity = false;
                         Time.timeScale = 1;
-                        directionChosen = true;
 
                         //empecher le joueur de redash avec un cd et indication qu'il ne peut pas dash
                         StartCoroutine(coolDownDash());
                         canDash = false;
                         //anim 
-                        anim.SetBool("prepDash", false);
-                        anim.SetBool("dashing", true);
+                        if (lengthSaut > 1)
+                        {
+                            anim.SetBool("prepDash", false);
+                            anim.SetBool("dashing", true);
+                        }
+                        else
+                            anim.SetBool("prepDash", false);
+
 
                         //sauvegarde de la pos pour le check de la distance dashée
                         posPlayerPreDash = transform.position;
@@ -174,10 +181,11 @@ public class PlayerManager : MonoBehaviour
                             sens = -1;
                         canDash = false;
                         break;
-                       
+
                     }
             }
         }
+       
 
     }
 
@@ -204,7 +212,7 @@ public class PlayerManager : MonoBehaviour
     void Run()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, 1.5f) && anim.GetBool("prepDash") == false && anim.GetBool("dashing") == false)
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector2.down), out hit, 1) && anim.GetBool("prepDash") == false && anim.GetBool("dashing") == false)
         {
             anim.SetBool("running", true);
             body.velocity = new Vector2(speed*sens, 0);    

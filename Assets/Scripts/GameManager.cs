@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,13 +24,15 @@ public class GameManager : MonoBehaviour
         if(PlayerManager.playerManager.dead)
         {
             StartCoroutine(RestartDelay());
+
+            /*PlayerManager.playerManager.transform.position = startingPosition.transform.position; //On repositionne le player au point de départ
+            cameraBrain.m_Follow = PlayerManager.playerManager.transform; //On repositionne la caméra sur le joueur
+            PlayerManager.playerManager.dead = false; //Le joueur n'est plus mort*/
         }
     }
     IEnumerator RestartDelay()
     {
         yield return new WaitForSeconds(timeBeforeRestart);
-        PlayerManager.playerManager.transform.position = startingPosition.transform.position; //On repositionne le player au point de départ
-        cameraBrain.m_Follow = PlayerManager.playerManager.transform; //On repositionne la caméra sur le joueur
-        PlayerManager.playerManager.dead = false; //Le joueur n'est plus mort
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

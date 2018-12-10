@@ -14,8 +14,6 @@ public class ScrollingManager : MonoBehaviour
     public int vitesseMoy;
     public int vitesseMin;
 
-    public CinemachineVirtualCamera cameraBrain;
-
     float distance;
 
     [Range(1, 100), SerializeField, Header("Speed")]
@@ -31,7 +29,7 @@ public class ScrollingManager : MonoBehaviour
     {
         if(col.gameObject == PlayerManager.playerManager.gameObject) //reference au joueur par la var static
         {
-            cameraBrain.m_Follow = null; //blocage de la camera par une var static
+            GameManager.gameManager.cameraBrain.m_Follow = null; //blocage de la camera par une var static
             PlayerManager.playerManager.dead = true;
             Debug.Log("Player Dead");
         }

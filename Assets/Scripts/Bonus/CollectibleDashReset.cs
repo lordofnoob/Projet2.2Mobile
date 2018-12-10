@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CollectibleDashReset : MonoBehaviour
 {
-    public GameObject player;
 
      private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.gameObject == PlayerManager.playerManager.gameObject)
         {
-            player.GetComponent<PlayerManager>().canDash = true;
+            PlayerManager.playerManager.canDash = true;
             Destroy(gameObject);
         }
     }

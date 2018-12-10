@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65899880892366402}
   - component: {fileID: 114486687671405766}
   m_Layer: 0
-  m_Name: Collectible 1
+  m_Name: ResetDash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,4 +108,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8db3cacb6535d14cb1852dd03542c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1159355728988590, guid: 0dfdc438acbb181489cdcbeb006a2668, type: 2}

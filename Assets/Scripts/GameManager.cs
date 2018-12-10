@@ -8,12 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager; //On rend le game manager accessible dans tous les scripts
 
-    [Range(0, 10), SerializeField, Header("Restart")]
+    [Range(0, 10), SerializeField, Header("Death Restart")]
     public int timeBeforeRestart = 3;   //Temps avant restart
     public CinemachineVirtualCamera cameraBrain; //Camera virtuelle de cinemachine
     public GameObject startingPosition; //Position à laquelle le joueur va réaparaitre
 
-    // Débloquage des 60 FPS pour le télephone
+    [Header("BonusPUB")]
+    public int bonusPub = 0; //nombre de bonus récupérés
+    public Canvas UiBonusPub;
+
+    private void Awake()
+    {
+        gameManager = this; // accès au game manager dans tout le code
+    }
     private void Start()
     {
         PlayerManager.playerManager.transform.position = startingPosition.transform.position;
@@ -21,7 +28,9 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(PlayerManager.playerManager.dead)
+        UiDisplayBonus();
+
+        if (PlayerManager.playerManager.dead)
         {
             StartCoroutine(RestartDelay());
 
@@ -30,9 +39,26 @@ public class GameManager : MonoBehaviour
             PlayerManager.playerManager.dead = false; //Le joueur n'est plus mort*/
         }
     }
+
+    private void UiDisplayBonus()
+    {
+        if (bonusPub > 0) //Ui affichage bonusPUB
+        {
+            UiBonusPub.transform.GetChild(0).gameObject.SetActive(true);
+            if (bonusPub > 1)
+            {
+                UiBonusPub.transform.GetChild(1).gameObject.SetActive(true);
+                if (bonusPub > 2)
+                {
+                    UiBonusPub.transform.GetChild(2).gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
     IEnumerator RestartDelay()
     {
-        yield return new WaitForSeconds(timeBeforeRestart);
+        yield return new WaitForSeconds(timeBeforeRestart); //Delai avant le restart
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

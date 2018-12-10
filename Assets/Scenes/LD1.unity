@@ -8314,7 +8314,7 @@ Prefab:
     - target: {fileID: 114281564005918728, guid: 0dfdc438acbb181489cdcbeb006a2668,
         type: 2}
       propertyPath: cooldownDash
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114281564005918728, guid: 0dfdc438acbb181489cdcbeb006a2668,
         type: 2}

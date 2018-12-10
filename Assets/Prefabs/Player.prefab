@@ -86,11 +86,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159355728988590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
-=======
-  m_LocalPosition: {x: 0, y: 21, z: 0}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4204115269427440}
@@ -221,19 +217,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9402675958c816346ba9c7eb31b5f424, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
   canDash: 1
   cam: {fileID: 0}
   speed: 30
   fleche: {fileID: 1445266681681996}
-=======
-  cam: {fileID: 20341986890556634, guid: d78ebcf8c9457814f8fb42d9754b8d9b, type: 2}
-  speed: 10
-  fleche: {fileID: 0}
->>>>>>> Stashed changes
   particlePrepDash: {fileID: 198712624427103840}
   anim: {fileID: 95126977178326282}
-  cooldownDash: 1
+  cooldownDash: 0.5
   body: {fileID: 54265206637990378}
   minLengthSaut: 1
   maxLengthSaut: 20

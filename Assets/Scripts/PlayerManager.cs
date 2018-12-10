@@ -5,17 +5,12 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-<<<<<<< Updated upstream:Assets/Scripts/PlayerManager.cs
     public static PlayerManager playerManager; //Permet d'accéder au player dans n'importe quel script à travers une variable static
     public bool dead = false;
 
     #region DashTweaking
     [Header("Dash")]
     public bool canDash = true;
-=======
-    public static bool dead=false;
-    public static bool canDash = true;
->>>>>>> Stashed changes:Assets/Scripts/PlayerDash.cs
     public Camera cam;
     public float cooldownDash;
     public Rigidbody body;
@@ -270,7 +265,7 @@ public class PlayerManager : MonoBehaviour
     IEnumerator coolDownDash()
     {
         yield return new WaitForSeconds(cooldownDash);
-        PlayerDash.canDash = true;
+        canDash = true;
     }
 
     void ParticlePrepDashOn()

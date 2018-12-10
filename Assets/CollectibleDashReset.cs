@@ -10,12 +10,8 @@ public class CollectibleDashReset : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-<<<<<<< Updated upstream:Assets/Scripts/CollectibleDashReset.cs
-            player.GetComponent<PlayerManager>().canDash = true;
-=======
             PlayerDash.canDash = true;
 
->>>>>>> Stashed changes:Assets/CollectibleDashReset.cs
             Destroy(gameObject);
         }
     }
